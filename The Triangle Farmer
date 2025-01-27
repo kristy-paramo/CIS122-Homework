@@ -1,1 +1,29 @@
+// Written By: Kristy Paramo
+// 1/27/25
 
+namespace TheTriangleFarmer
+{
+    using System;
+    public class Area1
+    {
+        public static void Main(string[] args)
+        {
+
+            // asks user for the base of the triangle
+            Console.WriteLine("Enter base of triangle: ");
+            double aBase = Convert.ToDouble(Console.ReadLine());
+
+            // asks user for the height of the triangle
+            Console.WriteLine("Enter height of triangle: ");
+            double aHeight = Convert.ToDouble(Console.ReadLine());
+
+            // calculates area 
+            double area = (aBase * aHeight) / 2;
+
+            // prints the statement along with the area
+            Console.WriteLine("The area of your triangle is: " + area);
+
+
+        }
+    }
+}
