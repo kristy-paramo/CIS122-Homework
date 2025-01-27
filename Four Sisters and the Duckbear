@@ -1,2 +1,39 @@
-// Written By: Kristy Paramo
+// Written by: Kristy Paramo
 // 1/27/25
+
+
+namespace FourSistersDuckbear
+{
+    using System;
+    public class ChocolateEggs
+    {
+        public static void Main(string[] args)
+        {
+
+            // asks the user the # of chocolate eggs gathered that day
+            Console.WriteLine("How many chocolate eggs were gathered today?: ");
+
+            // converts the user input into an integer
+            int eggsCollected = Convert.ToInt32(Console.ReadLine());
+
+            // divides the total amount of eggs collected by the four sisters
+            int eggsPerSister = eggsCollected / 4;
+
+            // calculates the remaining eggs to be fed to the pet
+            int eggsRemaining = eggsCollected % 4;
+
+            Console.WriteLine("Each sister gets: " + eggsPerSister + " eggs");
+            Console.WriteLine("Their pet duckbear will get the remaining " + eggsRemaining + " eggs");
+        }
+    }
+}
+
+
+
+// ANSWER QUESTION: 
+
+// Egg counts where the duckbear gets more than each sister does
+
+// 6 (each sister gets 1, the duckbear gets 2)
+// 3 (each sister gets 0, the duckbear gets 3)
+// 1 (each sister gets 0, the duckbear gets 1)
