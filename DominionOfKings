@@ -12,8 +12,10 @@ namespace DominionOfKings
             // asks user to enter how many estates, duchies, and provinces they have
             Console.WriteLine("How many estates do you rule?: ");
 
+            // converts user input to integer
             int estateTotal = Convert.ToInt32(Console.ReadLine());
 
+            // multiples the # of estates the user has by the points its worth
             int estatePoints = estateTotal * 1;
 
             Console.WriteLine("How many duchies do you rule?: ");
@@ -28,7 +30,7 @@ namespace DominionOfKings
 
             int provincePoints = provinceTotal * 6;
 
-            
+            // adds the total points the king is worth 
             int totalScore = estatePoints + duchiesPoints + provincePoints;
 
 
