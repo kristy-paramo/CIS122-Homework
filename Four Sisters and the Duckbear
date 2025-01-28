@@ -1,29 +1,94 @@
 // Written by: Kristy Paramo
-// 1/27/25
+// 1/28/25
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+*** THIS IS A FILE CALLED ChocolateEggs.cs
 
 namespace FourSistersDuckbear
 {
-    using System;
-    public class ChocolateEggs
+    public class EggsPerSister
+    {
+        // gets and sets
+        public int EggsCollected { get; set; }
+        
+
+        // constructor
+        public EggsPerSister(int aEggsCollected)
+        {
+            EggsCollected = aEggsCollected;
+        }
+
+
+        // methods
+        public int CalcEggsPerSister()
+        {
+            // this divides the number of eggs collected by the number of sisters
+            return EggsCollected / 4;
+        }
+
+        public override string ToString()
+        {
+            return CalcEggsPerSister().ToString();
+        }
+    }
+
+    public class EggsRemaining
+    {
+        // gets and sets
+        public int EggsCollected { get; set; }
+
+        
+        // constructor 
+        public EggsRemaining(int aEggsCollected)
+        {
+            EggsCollected = aEggsCollected;
+        }
+
+        // methods
+        public int CalcEggsRemaining()
+        {
+            // this finds the remainder of the number of eggs collected when it is divided by the 4 sisters
+            return EggsCollected % 4;
+        }
+
+        public override string ToString()
+        {
+            return CalcEggsRemaining().ToString();
+        }
+    }
+}
+
+
+
+
+*** THIS IS A DIFFERENT FILE CALLED Program.cs
+
+using System.Runtime.Intrinsics.Arm;
+
+namespace FourSistersDuckbear
+{
+    public class Program
     {
         public static void Main(string[] args)
         {
-
             // asks the user the # of chocolate eggs gathered that day
             Console.WriteLine("How many chocolate eggs were gathered today?: ");
+            int aEggsCollected = Convert.ToInt32(Console.ReadLine());
 
-            // converts the user input into an integer
-            int eggsCollected = Convert.ToInt32(Console.ReadLine());
+            // new objects
+            EggsPerSister aEggsPerSister = new EggsPerSister(aEggsCollected);
+            EggsRemaining aEggsRemaining = new EggsRemaining(aEggsCollected);
 
-            // divides the total amount of eggs collected by the four sisters
-            int eggsPerSister = eggsCollected / 4;
+            // results 
+            Console.WriteLine($"Each sister gets: {aEggsPerSister} eggs");
 
-            // calculates the remaining eggs to be fed to the pet
-            int eggsRemaining = eggsCollected % 4;
-
-            Console.WriteLine("Each sister gets: " + eggsPerSister + " eggs");
-            Console.WriteLine("Their pet duckbear will get the remaining " + eggsRemaining + " eggs");
+            Console.WriteLine($"Their pet duckbear will get the remaining {aEggsRemaining} egg(s)");
         }
     }
 }
