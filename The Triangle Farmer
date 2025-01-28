@@ -1,6 +1,8 @@
 // Written by: Kristy Paramo
 // 1/28/25
 
+
+*** THIS FILE IS CALLED TRIANGLEFARMER.CS
 namespace TriangleFarmer
 {
     public class Program
@@ -31,6 +33,8 @@ namespace TriangleFarmer
 }
 
 
+
+*** THIS IS ANOTHER CS FILE CALLED PROGRAM.CS
 
 
 using System;
