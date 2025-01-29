@@ -59,6 +59,8 @@ namespace DefenseOfConsolas
             Console.WriteLine($"({aTargetRow - 1}, {aTargetColumn})");
             Console.WriteLine($"({aTargetRow}, {aTargetColumn + 1})");
             Console.WriteLine($"({aTargetRow + 1}, {aTargetColumn})");
+
+            Console.Beep();
         }
     }
 }
