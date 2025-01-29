@@ -1,2 +1,65 @@
 // Written by: Kristy Paramo
 // 1/29/25
+
+
+*** THIS IS A FILE CALLED Defenses.cs
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DefenseOfConsolas
+{
+    public class Defenses
+    {
+        // gets and sets
+        public int TargetRow { get; set; }
+        public int TargetColumn { get; set; }
+
+
+        // constructors 
+        public Defenses(int aTargetRow, int aTargetColumn)
+        {
+            TargetRow = aTargetRow;
+            TargetColumn = aTargetColumn;
+        }
+
+    }
+}
+
+
+
+
+
+*** THIS IS ANOTHER FILE CALLED Program.cs
+
+namespace DefenseOfConsolas
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            
+            // asks user their target row and converts it to an integer
+            Console.WriteLine("Target Row?:");
+            int aTargetRow = Convert.ToInt32(Console.ReadLine());
+
+           // asks user their target column and converts it to an integer
+            Console.WriteLine("Target Column?:");
+            int aTargetColumn = Convert.ToInt32(Console.ReadLine());    
+
+            // changes color of the font 
+            Console.ForegroundColor = ConsoleColor.Blue;
+
+            // results giving coordinates to deploy to 
+            Console.WriteLine("Deploy to:");
+            Console.WriteLine($"({aTargetRow}, {aTargetColumn - 1})");
+            Console.WriteLine($"({aTargetRow - 1}, {aTargetColumn})");
+            Console.WriteLine($"({aTargetRow}, {aTargetColumn + 1})");
+            Console.WriteLine($"({aTargetRow + 1}, {aTargetColumn})");
+        }
+    }
+}
+
