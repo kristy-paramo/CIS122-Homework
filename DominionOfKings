@@ -1,42 +1,96 @@
 // Written by: Kristy Paramo
-// 1/27/25
+// 1/28/25
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+*** THIS IS A FILE CALLED GreatestKingdom.cs
 
 
 namespace DominionOfKings
 {
     public class GreatestKingdom
-
     {
-        static void Main(string[] args)
+        // gets and sets
+        public int EstatesRuled { get; set; }
+        public int DuchiesRuled { get; set; }
+        public int ProvincesRuled { get; set; }
+
+
+
+        // constructors
+        public GreatestKingdom(int aEstatesRuled, int aDuchiesRuled, int aProvincesRuled)
         {
-            // asks user to enter how many estates, duchies, and provinces they have
+            EstatesRuled = aEstatesRuled;
+            DuchiesRuled = aDuchiesRuled;
+            ProvincesRuled = aProvincesRuled;
+        }
+
+        // methods
+
+        public int EstatePoints()
+        {
+            return EstatesRuled * 1;
+        }
+
+        public int DuchiesPoints()
+        {
+            return DuchiesRuled * 3;
+        }
+
+        public int ProvincesPoints()
+        {
+            return ProvincesRuled * 6;
+        }
+
+        public int CalcTotal()
+        {
+            return EstatePoints() + DuchiesPoints() + ProvincesPoints();    
+        }
+        public override string ToString()
+        {
+            return $"Total Points: {CalcTotal()}";
+        }
+    }
+    
+
+}
+
+
+
+
+
+*** THIS IS ANOTHER FILE CALLED Program.cs
+
+namespace DominionOfKings
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
             Console.WriteLine("How many estates do you rule?: ");
 
-            // converts user input to integer
-            int estateTotal = Convert.ToInt32(Console.ReadLine());
-
-            // multiples the # of estates the user has by the points its worth
-            int estatePoints = estateTotal * 1;
+            int aEstatesRuled = Convert.ToInt32(Console.ReadLine());
 
             Console.WriteLine("How many duchies do you rule?: ");
 
-            int duchiesTotal = Convert.ToInt32(Console.ReadLine());
-
-            int duchiesPoints = duchiesTotal * 3;
+            int aDuchiesRuled = Convert.ToInt32(Console.ReadLine());
 
             Console.WriteLine("How many provinces do you rule?: ");
 
-            int provinceTotal = Convert.ToInt32(Console.ReadLine());
+            int aProvincesRuled = Convert.ToInt32(Console.ReadLine());
 
-            int provincePoints = provinceTotal * 6;
+            // object
 
-            // adds the total points the king is worth 
-            int totalScore = estatePoints + duchiesPoints + provincePoints;
+            GreatestKingdom aGreatestKingdom = new GreatestKingdom(aEstatesRuled, aDuchiesRuled, aProvincesRuled);
 
-
-            Console.WriteLine("Your point total is: " + totalScore);
-
-            
+            // results
+            Console.WriteLine(aGreatestKingdom.ToString());
         }
     }
 }
+
