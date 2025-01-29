@@ -1,3 +1,27 @@
 // Written by: Kristy Paramo
 // 1/29/25
 
+*** THIS IS ONE MAIN FILE CALLED Program.cs
+
+namespace RepairingClocktower
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            // asks user for a number 
+
+            Console.WriteLine("Enter a number:");
+            int number = Convert.ToInt32(Console.ReadLine());
+
+            // if the number is even, Tick is shown
+            if (number % 2 == 0)
+                Console.WriteLine("Tick");
+
+            // if the number is odd, Tock is shown
+            if (number % 2 == 1)
+                Console.WriteLine("Tock");
+
+        }
+    }
+}
