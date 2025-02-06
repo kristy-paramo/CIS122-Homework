@@ -1,42 +1,90 @@
-        Console.WriteLine("Enter an x value: ");
-        int x = Convert.ToInt32(Console.ReadLine());
-
-        Console.WriteLine("Enter a y value: ");
-        int y = Convert.ToInt32(Console.ReadLine());
-
-        EnemyDirection(x, y);
-    }
+// Written by: Kristy Paramo
+// 2/6/25
 
 
-    public static void EnemyDirection(int x, int y)
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+
+*** THIS IS A FILE CALLED ConsolasWatchTower.cs
+
+
+namespace Watchtower
+{
+    public class ConsolasWatchTower
     {
-        if (x < 0 && y > 0)
-            Console.WriteLine("The enemy is to the NorthWest!");
+        // class gets and sets for x and y
+        public int X { get; }
+        public int Y { get; }
 
-        else if (x == 0 && y > 0)
-            Console.WriteLine("The enemy is to the North!");
+        // constructor
+        public ConsolasWatchTower(int x, int y)
+        {
+            X = x;
+            Y = y;
+        }
 
-        else if (x > 0 && y > 0)
-            Console.WriteLine("The enemy is to the NorthEast!");
+        // method
+        public static string EnemyDirection(int x, int y)
+        {
+            if (x < 0 && y > 0)
+                return "The enemy is to the NorthWest!";
 
-        else if (x < 0 && y == 0)
-            Console.WriteLine("The enemy is to the West!");
+            else if (x == 0 && y > 0)
+                return "The enemy is to the North!";
 
-        else if (x == 0 && y == 0)
-            Console.WriteLine("The enemy is here!");
+            else if (x > 0 && y > 0)
+                return "The enemy is to the NorthEast!";
 
-        else if (x > 0 && y == 0)
-            Console.WriteLine("The enemy is to the East!");
+            else if (x < 0 && y == 0)
+                return "The enemy is to the West!";
 
-        else if (x < 0 && y < 0)
-            Console.WriteLine("The enemy is to the SouthWest!");
+            else if (x == 0 && y == 0)
+                return "The enemy is here!";
 
-        else if (x == 0 && y < 0)
-            Console.WriteLine("The enemy is to the South!");
+            else if (x > 0 && y == 0)
+                return "The enemy is to the East!";
 
-        else if (x > 0 && y < 0)
-            Console.WriteLine("The enemy is to the SouthEast!");
+            else if (x < 0 && y < 0)
+                return "The enemy is to the SouthWest!";
+
+            else if (x == 0 && y < 0)
+                return "The enemy is to the South!";
+
+            else if (x > 0 && y < 0)
+                return "The enemy is to the SouthEast!";
+            else 
+                return ("no enemy");
+
+        }
+    }
+}
 
 
+
+
+*** THIS IS ANOTHER FILE CALLED Program.cs
+
+
+namespace Watchtower
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+
+            Console.WriteLine("Enter the x coordinate: ");
+            int x = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Enter the y coordinate: ");
+            int y = Convert.ToInt32(Console.ReadLine());
+
+            string result = ConsolasWatchTower.EnemyDirection(x, y);
+            Console.WriteLine(result);
+        }
     }
 }
