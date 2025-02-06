@@ -1,0 +1,42 @@
+        Console.WriteLine("Enter an x value: ");
+        int x = Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine("Enter a y value: ");
+        int y = Convert.ToInt32(Console.ReadLine());
+
+        EnemyDirection(x, y);
+    }
+
+
+    public static void EnemyDirection(int x, int y)
+    {
+        if (x < 0 && y > 0)
+            Console.WriteLine("The enemy is to the NorthWest!");
+
+        else if (x == 0 && y > 0)
+            Console.WriteLine("The enemy is to the North!");
+
+        else if (x > 0 && y > 0)
+            Console.WriteLine("The enemy is to the NorthEast!");
+
+        else if (x < 0 && y == 0)
+            Console.WriteLine("The enemy is to the West!");
+
+        else if (x == 0 && y == 0)
+            Console.WriteLine("The enemy is here!");
+
+        else if (x > 0 && y == 0)
+            Console.WriteLine("The enemy is to the East!");
+
+        else if (x < 0 && y < 0)
+            Console.WriteLine("The enemy is to the SouthWest!");
+
+        else if (x == 0 && y < 0)
+            Console.WriteLine("The enemy is to the South!");
+
+        else if (x > 0 && y < 0)
+            Console.WriteLine("The enemy is to the SouthEast!");
+
+
+    }
+}
