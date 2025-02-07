@@ -1,0 +1,81 @@
+// Written by: Kristy Paramo
+// 2/7/25
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+
+*** THIS IS A FILE CALLED Blasts.cs
+
+
+namespace TheMagicCannon
+{
+    public class Blasts
+    {
+        //public int Num {  get; set; }
+
+        //public Blasts(int num)
+        //{ this.Num = num; }
+
+
+        
+        public static void WhichBlast(int num)
+        {
+            // if number is divisible by 5 and 3, the blast is both, portrayed in blue
+            if (num % 5 == 0 && num % 3 == 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine($"{num}: Electric and Fire");
+            }
+
+            // if number is only divisible by 5, the blast is electric and yellow
+            else if (num % 5 == 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine($"{num}: Electric");
+            }
+
+            // if number is only divisible by 3, the blast is fire and red
+            else if (num % 3 == 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"{num}: Fire");
+            }
+
+            // if number is neither divisible by 5 or 3, there is no blast, portrayed in white
+            else
+            {
+                Console.ForegroundColor= ConsoleColor.White;
+                Console.WriteLine($"{num}: Normal");
+            }
+
+
+
+        }
+    }
+}
+
+
+
+*** THIS IS ANOTHER FILE CALLED Program.cs
+
+
+namespace TheMagicCannon
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            Console.WriteLine();
+
+            for (int num = 1; num <= 100; num++)
+            {
+                Blasts.WhichBlast(num);
+            }
+        }
+    }
+}
