@@ -1,0 +1,82 @@
+// Written by: Kristy Paramo
+// 2/6/25
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+
+*** THIS IS A FILE CALLED Array.cs
+
+
+namespace TheReplicator
+{
+    
+    public class Array
+    {
+        // class variable
+        private int[] original;
+        private int[] copy;
+
+
+        // constructor
+        public Array(int num)
+        {
+            original = new int[num];
+            copy = new int[num];
+        }
+
+        // gets the user to enter 5 numbers
+        public void GetNumber()
+        {
+            for (int item = 0; item < 5; item ++)
+            {
+                Console.WriteLine("Enter a number: ");
+                original[item] = Convert.ToInt32(Console.ReadLine());
+            }
+        }
+
+         // copies the original array, sets them equal to eachother
+         public void CopyArray()
+         {
+            for (int item = 0; item < original.Length; item ++)
+            {
+                copy[item] = original[item];
+            }
+         }
+
+        // allows the arrays to be displayed
+        public void GetArray()
+        {
+            for (int item = 0; item < original.Length; item ++)
+            {
+                Console.WriteLine($"{original[item]} and {copy[item]}");
+            }
+        }
+    }
+}
+
+
+
+
+*** THIS IS ANOTHER FILE CALLED Program.cs
+
+namespace TheReplicator
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            Array array = new Array(5);
+
+            array.GetNumber();
+            array.CopyArray();
+            array.GetArray();
+            
+        }
+    }
+}
