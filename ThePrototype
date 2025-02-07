@@ -1,0 +1,80 @@
+// Written by: Kristy Paramo
+// 2/7/25
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+
+*** THIS IS A FILE CALLED GuessNumber.cs
+
+
+
+namespace ThePrototype
+{
+    public class GuessNumber
+    {
+        // gets and sets 
+        public int UserOne { get; private set; }
+        public int UserTwo { get; private set; }
+
+        // constructor
+        public GuessNumber(int numOne, int numTwo)
+        {
+            this.UserOne = numOne;
+            this.UserTwo = numTwo;
+        }
+
+        //method
+        public static string RightOne(int numOne, int numTwo)
+        {
+
+            if (numTwo == numOne)
+                return "That is correct!";
+            else
+                return "Keep guessing.";
+
+        }
+
+    }
+}
+
+
+
+*** THIS IS ANOTHER FILE CALLED Program.cs
+
+namespace ThePrototype
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            Console.WriteLine("User 1, enter a number between 1 and 100: ");
+            int numOne = Convert.ToInt32(Console.ReadLine());
+            Console.Clear();
+
+
+            // initializes numTwo and result so they exist outside the loop
+            int numTwo;
+            string result;
+
+            // does whats in the brackets while user 2/s number doesnt match user 1
+            do
+            {
+                Console.WriteLine("User 2, guess the number");
+                numTwo = Convert.ToInt32(Console.ReadLine());
+
+                result = GuessNumber.RightOne(numOne, numTwo);
+                Console.WriteLine(result);
+            } 
+            while (numTwo != numOne);
+
+
+        }
+    }
+}
+
