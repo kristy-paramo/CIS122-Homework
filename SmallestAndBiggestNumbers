@@ -1,0 +1,75 @@
+// Written by: Kristy Paramo
+// 2/12/25
+
+
+
+** THIS IS A FILE CALLED Calculate.cs
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection.Metadata.Ecma335;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace InClassCalculator
+{
+    public class MinMaxFinder
+    {
+        public static int[] FindMinMax(int[] nums)
+        {
+
+
+           // sets the min value to the highest value in the array
+            int min = int.MaxValue;
+
+          // sets the max value to the lowest value in the array
+            int max = int.MinValue;
+
+          // loops through each num in the array, sets the num to either min or max if it is higher/lower
+            foreach (int num in nums)
+            {
+                if (num < min)
+                {
+                    min = num;
+                }
+                if (num > max)
+                {
+                    max = num;
+                }
+            }
+            return new int[] { min, max };
+
+        }
+
+    }
+
+}
+       
+
+
+
+
+
+  *** THIS IS ANOTHER FILE CALLED Program.cs
+
+// Written by: Kristy Paramo
+// 2/12/25
+
+
+namespace InClassCalculator
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+
+            // here we are calling the function
+            int[] output = MinMaxFinder.FindMinMax(new int[] { 1, 89, 56, 76, -88 });
+            Console.WriteLine($"[{string.Join(", ", output)}]");
+        }  
+    }
+    
+}
