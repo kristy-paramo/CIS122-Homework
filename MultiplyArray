@@ -1,0 +1,71 @@
+// Written by Kristy Paramo
+// 2/12/25
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+
+*** THIS IS A FILE CALLED MultiplyByLength.cs
+
+
+namespace MultiplyArray
+{
+    public class MultiplyByLength
+    {
+        public static int[] Array(int[] values)
+        {
+
+            // gets how many values are in the array
+            int length = values.Length;
+
+            // makes a new array called result that will later hold the output numbers after multiplying the length
+            int[] result = new int[length];
+
+            // loops through each value in the array 
+            // sets the value at 0
+            // condition: loop will run if the value is less than the length
+            // increases the value after each loop (++)
+            for (int value = 0; value < length; value++)
+            {
+                // sets the new value in the result array to be the output of the value * length
+                result[value] = values[value] * length;
+            }
+
+            return result;
+        }
+    }
+}
+
+
+
+
+
+
+*** THIS IS ANOTHER FILE CALLED Program.cs
+
+
+// Written by: Kristy Paramo
+// 2/12/25
+
+
+
+namespace MultiplyArray
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+
+            // calling the function 
+            int[] result1 = MultiplyByLength.Array(new int[] { 2, 3, 1, 0 });
+
+            // alows the result to be written in the form of [..,..,..]
+            Console.WriteLine($"[{string.Join(",", result1)}]");
+        }
+    }
+}
