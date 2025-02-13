@@ -1,0 +1,77 @@
+// Written by: Kristy Paramo
+// 2/12/25
+
+
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+
+*** THIS IS A FILE CALLED aSmallerNumber.cs
+
+
+
+namespace SmallerNumber
+{
+    public class SmallNumber
+    {
+        public static string SmallNum(string numOne, string numTwo)
+        {
+
+            // compares the length of the digits of each number entered
+            // if numOne has less digits, it is returned 
+            if (numOne.Length < numTwo.Length)
+            {
+                return numOne;
+            }
+
+            // if numTwo has less digits, it is returned
+            if (numOne.Length > numTwo.Length)
+            {
+                return numTwo;
+            }
+
+            // checks for each character individually by indexing
+            for (int i = 0; i < numOne.Length; i++)
+            {
+                if (numOne[i] < numTwo[i])
+                    return numOne;
+                if (numOne[i] > numTwo[i])
+                    return numTwo;
+            }
+
+            // if they're the same length and have the same characters, either one is returned (numOne)
+            return numOne;
+        }
+    }
+}
+
+
+
+
+
+*** THIS IS ANOTHER FILE CALLED Program.cs
+
+// Written by: Kristy Paramo
+// 2/12/25
+
+
+
+namespace SmallerNumber
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            // the result is a string 
+
+            string result = SmallNumber.SmallNum("21", "44");
+            Console.WriteLine(result);
+        }
+    }
+}
