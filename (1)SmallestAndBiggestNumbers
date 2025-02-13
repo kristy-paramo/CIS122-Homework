@@ -23,10 +23,11 @@ namespace InClassCalculator
 
 
            // sets the min value to the highest value in the array
-            int min = int.MaxValue;
+            int min = nums[0];
+
 
           // sets the max value to the lowest value in the array
-            int max = int.MinValue;
+            int max = nums[0];
 
           // loops through each num in the array, sets the num to either min or max if it is higher/lower
             foreach (int num in nums)
@@ -67,8 +68,10 @@ namespace InClassCalculator
         {
 
             // here we are calling the function
-            int[] output = MinMaxFinder.FindMinMax(new int[] { 1, 89, 56, 76, -88 });
-            Console.WriteLine($"[{string.Join(", ", output)}]");
+            int[] ex = [1, 89, 56, 76, -88 ];
+            int[] output = MinMaxFinder.FindMinMax(ex);
+            Console.WriteLine("Min:" + output[0]);
+
         }  
     }
     
