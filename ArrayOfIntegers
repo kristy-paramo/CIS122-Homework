@@ -1,0 +1,81 @@
+// Written by: Kristy Paramo
+// 2/12/25
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+
+
+*** THIS IS A FILE CALLED Integers.cs
+
+
+
+namespace ArrayOfIntegers
+{
+    public class Integers
+    {
+        // using int because that is what we want returned
+        // using int[] because an array will be what the function is working with
+        public static int AbsValue(int[] elements)
+        {
+            // initialize the sum to 0
+            int sum = 0;
+           
+            // loops through each element in the array
+            foreach (int element in elements)
+            {
+                // sets absValue as an integer so it can be used in the loop
+                int absValue;
+
+                // checks if the element is negative
+                if (element < 0)
+                {
+                    // cancels out the negative, result as a positive int
+                    absValue = -element;
+                }
+
+                else
+                {
+                    // keeps the element positive
+                    absValue = element;
+                }
+                   
+                // adds the positive elements to the sum
+                sum += absValue;
+            }
+
+            // returns the sum of all the absValue elements 
+            return sum; 
+        }
+    }
+}
+
+
+
+
+*** THIS IS A FILE CALLED Program.cs
+
+
+// Written by: Kristy Paramo
+// 2/12/25
+
+
+namespace ArrayOfIntegers
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+
+            // the output is going to be the absolute value of that array
+            // calling the function 'AbsValue'
+            int output = Integers.AbsValue(new int[] { 2, -1, 4, 8, 10 });
+            Console.WriteLine(output);
+        }
+    }
+}
