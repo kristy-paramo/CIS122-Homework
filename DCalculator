@@ -1,0 +1,63 @@
+// Written by: Kristy Paramo
+// 2/13/25
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+
+*** THIS IS A FILE CALLED DCalculator.cs
+
+
+
+namespace LetterCounter
+{
+    public class DCalculator
+    {
+        public static int Calc(string sentence)
+        {
+            // sets the count to 0
+            int count = 0;
+
+            // loops through each letter in the string sentence
+            foreach(char letter in sentence)
+            {
+                // if the letter is d or D, the count adds 1
+                if (letter == 'd' || letter == 'D')
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
+    }
+}
+
+
+
+
+
+*** THIS IS ANOTHER FILE CALLED Program.cs
+
+// Written by: Kristy Paramo
+// 2/13/25
+
+
+
+namespace LetterCounter
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine(DCalculator.Calc("Dylan got distracted."));
+        }
+    }
+}
+
+
