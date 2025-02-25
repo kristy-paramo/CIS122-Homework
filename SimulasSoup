@@ -1,0 +1,122 @@
+// Written by Kristy Paramo
+// 2/12/25
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.VisualBasic;
+
+
+
+*** THIS IS A FILE CALLED Soup.cs
+
+namespace SimulasSoup
+{
+    public class Soup
+    {
+
+        // gets and sets 
+        public Type SoupType {  get; }
+        
+        public MainIngredient Ingredient { get; }
+        
+        public Seasoning Flavor { get; }
+
+        
+        // enumerations
+        public enum Type { Soup, Stew, Gumbo }
+        public enum MainIngredient { Mushroom, Chicken, Carrot, Potato }
+        public enum Seasoning { Spicy, Salty, Sweet }
+
+
+        // tuple
+        public (Type, MainIngredient, Seasoning) SoupDetails { get;  }
+        
+        
+        // constructor
+        public Soup (string typeInput, string ingredientInput, string seasoningInput)
+        {
+            SoupType = typeInput.ToLower() switch
+            {
+                "soup" => Type.Soup,
+                "stew" => Type.Stew,
+                "gumbo" => Type.Gumbo,
+                _ => throw new ArgumentException("Invalid soup type")
+            };
+
+            Ingredient = ingredientInput.ToLower() switch
+            {
+                "mushroom" => MainIngredient.Mushroom,
+                "chicken" => MainIngredient.Chicken,
+                "carrot" => MainIngredient.Carrot,
+                "potato" => MainIngredient.Potato,
+                _ => throw new ArgumentException ("Invalid ingredient")
+            };
+
+            Flavor = seasoningInput.ToLower() switch
+            {
+                "spicy" => Seasoning.Spicy,
+                "salty" => Seasoning.Salty,
+                "sweet" => Seasoning.Sweet,
+                _ => throw new ArgumentException ("Invalid seasoning")
+            };
+
+            
+        }
+
+        // method ToString
+        public override string ToString()
+        {
+            return $"The food you will receive is a {Flavor} {Ingredient} {SoupType}";
+        }
+    }
+}
+
+
+
+
+
+
+
+
+*** THIS IS ANOTHER FILE CALLED Program.cs
+
+
+
+
+// Written by: Kristy Paramo
+// 2/12/25
+
+
+namespace SimulasSoup
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+          
+
+
+            string input;
+
+
+            Console.WriteLine("Pick your type (soup/stew/gumbo): ");
+            string typeInput= Console.ReadLine();
+
+            Console.WriteLine("Pick your main ingredient (mushroom/chicken/carrot/potato): ");
+            string ingredientInput = Console.ReadLine();
+
+            Console.WriteLine("Pick your seasoning (spicy/salty/sweet): ");
+            string seasoningInput = Console.ReadLine();
+
+            Soup soup = new Soup(typeInput, ingredientInput, seasoningInput);
+            Console.WriteLine(soup.ToString());
+        }
+
+    }
+    
+}
