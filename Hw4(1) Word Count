@@ -1,0 +1,78 @@
+// Written by: Kristy Paramo
+// 2/17/25
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+
+
+*** THIS IS A FILE CALLED WordCount.cs
+
+
+
+namespace WordCount
+{
+    public class CountWords
+    {
+        public int Count(string sentence)
+        {
+            int count = 0;
+            char lastProcessedChar = ' ';
+            bool inWord = false;
+
+            foreach (char c in sentence)
+            {
+                // checks if the character is not a space
+                if (c != lastProcessedChar)
+                {
+                    // if its not a space, count is incremented to count that word
+                    if (!inWord)
+                    {
+                        count++;
+                        inWord = true; // we are inside a word
+                    }
+                }
+                else
+                {
+                    inWord = false; // not in a word when there is a space encountered
+                }
+            }
+            return count;
+        }
+    }
+}
+
+
+
+
+
+
+
+*** THIS IS ANOTHER FILE CALLED Program.cs
+
+
+
+
+// Written by: Kristy Paramo
+// 2/18/25
+
+
+namespace WordCount
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+
+            // initializes new object
+            CountWords aCount = new CountWords();
+            Console.WriteLine(aCount.Count("This is a test"));  // outputs 4
+        }
+    }
+}
+
