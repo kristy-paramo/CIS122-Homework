@@ -11,11 +11,7 @@ using System.Threading.Tasks;
 
 
 
-
-
 *** THIS IS A FILE CALLED Arrow.cs
-
-
 
 
 namespace VinFletchersArrows
@@ -42,8 +38,7 @@ namespace VinFletchersArrows
         // full constructor
         public Arrow(Arrowhead arrowhead, Fletching fletching, float shaftLength)
         {
-            if (shaftLength <= 60 || shaftLength >= 100)
-                throw new ArgumentOutOfRangeException("Shaft length is out of range");
+            
             ArrowheadType = arrowhead;
             FletchingType = fletching;
             ShaftLength = shaftLength;
@@ -82,6 +77,7 @@ namespace VinFletchersArrows
             return cost;
         }
 
+
     }
 }
 
@@ -91,7 +87,9 @@ namespace VinFletchersArrows
 
 
 
+
 *** THIS IS ANOTHER FILE CALLED Program.cs
+
 
 
 
@@ -106,21 +104,76 @@ namespace VinFletchersArrows
     {
         public static void Main(string[] args)
         {
+            
             Console.WriteLine("Choose an arrowhead (Steel/Wood/Obsidian): ");
             string arrowheadInput = Console.ReadLine();
             Arrowhead arrowhead;
 
+            // based on user input, it will recognize it and switch it to what the value is for each arrowhead
+            switch (arrowheadInput)
+            {
+                case "Steel":
+                    arrowhead = Arrowhead.Steel;
+                    break;
 
+                case "Wood":
+                    arrowhead = Arrowhead.Wood;
+                    break;
 
-            Console.WriteLine("Choose a fletching (Plastic/TurkeyFeathers/GooseFeathers; ");
+                case "Obsisian":
+                    arrowhead = Arrowhead.Obsidian;
+                    break;
+
+                default:
+                    arrowhead = Arrowhead.Steel;
+                    break;
+
+            }
+
+         
+            Console.WriteLine("Choose a fletching (Plastic/Turkey Feathers/Goose Feathers; ");
             string fletchingInput = Console.ReadLine();
             Fletching fletching;
 
+            // based on user input, it will recognize it and switch it to what the value is for each fletching
+            switch (fletchingInput)
+            {
+                case "Plastic":
+                    fletching = Fletching.Plastic;
+                    break;
 
-            Console.WriteLine("Enter the shaft length (60-100c cm): ");
+                case "Turkey Feathers":
+                    fletching = Fletching.TurkeyFeathers;
+                    break;
+
+                case "Goose Feathers":
+                    fletching= Fletching.GooseFeathers;
+                    break;
+
+                default:
+                    fletching = Fletching.Plastic;
+                    break;
+            }
+
+
+            Console.WriteLine("Enter the shaft length (60-100 cm): ");
             float shaftLength = float.Parse(Console.ReadLine());
 
-            Arrow arrow = new Arrow(); 
+            // if the user enters a length out of the 60-100 range, it will give an invalid output and make them keep 
+            // inputting until it falls within the range
+            while (shaftLength < 60 || shaftLength > 100)
+            {
+                Console.WriteLine("Invalid shaft length.");
+                Console.WriteLine("Enter the shaft length (60-100 cm): ");
+
+                // converts the input to a float
+                shaftLength = float.Parse(Console.ReadLine());
+                
+
+            }
+            
+            // creates a new object instance
+            Arrow arrow = new Arrow(arrowhead, fletching, shaftLength);
             Console.WriteLine($"Your arrow costs {arrow.GetCost()} gold");
 
         }
