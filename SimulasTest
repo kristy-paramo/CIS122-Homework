@@ -1,0 +1,141 @@
+// Written by: Kristy Paramo
+// 2/14/25
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+*** THIS IS A PROGRAM CALLED Enumeration.cs
+
+namespace SimulasTest
+{
+    public class Chest
+    {
+        public enum ChestState { Open, Closed, Locked, Unlocked }
+        
+        private ChestState currentStatus;
+        private string Status
+        {
+            get { return this.Status; }
+            set { this.Status = value; }    
+        }
+
+        ChestState current = ChestState.Locked;
+        public void Lock()
+        {
+            if (current == ChestState.Closed)
+            {
+                currentStatus = ChestState.Locked;
+                Console.WriteLine("The chest is locked");
+            }
+
+            else if (current == ChestState.Locked)
+            {
+                Console.WriteLine("Chest is already locked.");
+            }
+
+            else
+            {
+                Console.WriteLine("Action cannot be done. Chest must be closed to lock.");
+            }
+        }
+
+        public void Unlock()
+        {
+            if (current == ChestState.Locked)
+            {
+                currentStatus = ChestState.Unlocked;
+                Console.WriteLine("The chest is unlocked but closed.");
+            }
+
+            else if (current == ChestState.Unlocked)
+            {
+                Console.WriteLine("Chest is already unlocked.");
+            }
+            else
+            {
+                Console.WriteLine("Action cannot be done.");
+            }
+        }
+
+        public void Open()
+        {
+            if (current == ChestState.Unlocked)
+            {
+                currentStatus = ChestState.Open;
+                Console.WriteLine("The chest is open.");
+            }
+
+            else if (current == ChestState.Open)
+            {
+                Console.WriteLine("Chest is already open.");
+            }
+            else
+            {
+                Console.WriteLine("Action cannot be done.");
+            }
+        }
+
+
+
+
+
+
+
+*** THIS IS ANOTHER FILE CALLED Program.cs
+
+
+// Written by: Kristy Paramo
+// 2/14/25
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace SimulasTest
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            Chest chest = new Chest();
+            string input;
+
+
+            //ChestState newState = chest.ChangeState(input);
+            
+            while (true)
+            {
+                Console.Write(" What do you want to do?");
+                input = Console.ReadLine();
+
+                switch (input)
+                {
+                    case "lock":
+                        chest.Lock();
+                        break;
+
+                    case "unlock":
+                        chest.Unlock();
+                        break;
+
+                    case "open":
+                        chest.Open(); 
+                        break;
+
+                    case "close":
+                        chest.Close();
+                        break;
+                }
+            }
+            
+        }
+    }
+}
