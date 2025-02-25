@@ -1,0 +1,129 @@
+// Written by: Kristy Paramo
+// 2/12/25
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Numerics;
+using System.Text;
+using System.Threading.Tasks;
+
+
+
+
+
+*** THIS IS A FILE CALLED Arrow.cs
+
+
+
+
+namespace VinFletchersArrows
+{
+    // enumerations 
+    public enum Arrowhead { Steel, Wood, Obsidian }
+    public enum Fletching { Plastic, TurkeyFeathers, GooseFeathers }
+    
+    public class Arrow
+    {
+
+        // gets and sets
+        public Arrowhead ArrowheadType { get; set; }
+
+        public Fletching FletchingType { get; set; }
+
+        public float ShaftLength { get; }
+
+
+
+        // empty constructor
+        public Arrow() : this(Arrowhead.Wood, Fletching.GooseFeathers, 75) { }
+
+        // full constructor
+        public Arrow(Arrowhead arrowhead, Fletching fletching, float shaftLength)
+        {
+            if (shaftLength <= 60 || shaftLength >= 100)
+                throw new ArgumentOutOfRangeException("Shaft length is out of range");
+            ArrowheadType = arrowhead;
+            FletchingType = fletching;
+            ShaftLength = shaftLength;
+        }
+
+        
+
+        // methods
+        public float GetCost()
+        {
+            float cost = 0;
+
+            // arrowhead cost
+
+            
+            cost += ArrowheadType switch
+            {
+                Arrowhead.Steel => 10,
+                Arrowhead.Wood => 3,
+                Arrowhead.Obsidian => 5,
+                _ => 0
+            };
+
+            // fletching cost
+            cost += FletchingType switch
+            {
+                Fletching.Plastic => 10,
+                Fletching.TurkeyFeathers => 5,
+                Fletching.GooseFeathers => 3,
+                _ => 0
+            };
+             
+            // shaft cost
+            cost += ShaftLength * 0.05f;
+
+            return cost;
+        }
+
+    }
+}
+
+
+
+
+
+
+
+*** THIS IS ANOTHER FILE CALLED Program.cs
+
+
+
+// Written by: Kristy Paramo
+// 2/12/25
+
+
+
+namespace VinFletchersArrows
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            Console.WriteLine("Choose an arrowhead (Steel/Wood/Obsidian): ");
+            string arrowheadInput = Console.ReadLine();
+            Arrowhead arrowhead;
+
+
+
+            Console.WriteLine("Choose a fletching (Plastic/TurkeyFeathers/GooseFeathers; ");
+            string fletchingInput = Console.ReadLine();
+            Fletching fletching;
+
+
+            Console.WriteLine("Enter the shaft length (60-100c cm): ");
+            float shaftLength = float.Parse(Console.ReadLine());
+
+            Arrow arrow = new Arrow(); 
+            Console.WriteLine($"Your arrow costs {arrow.GetCost()} gold");
+
+        }
+    }
+}
+
