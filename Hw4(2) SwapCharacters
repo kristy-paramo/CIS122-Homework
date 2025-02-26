@@ -1,0 +1,93 @@
+// Written by: Kristy Paramo
+// 2/18/25
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+
+
+*** THIS IS A FILE CALLED Swapped.cs
+
+
+
+
+
+namespace SwapCharacters
+{
+    public class Swapped
+    {
+        public string FirstLast(string word)
+        {
+            // initializes the word as a string
+            string output = word;
+
+            // empty string to add the swapped word
+            string newOutput = "";
+
+
+            // checks if the length of the word is less than 2
+            if (word.Length < 2)
+            {
+                return "Incompatible.";
+            }
+
+            // checks if the first word and last word are the same
+            // if they're the same, it returns "two's a pair"
+            else if (word[0] == word[word.Length - 1])
+            {
+                return "Two's a pair.";
+            }
+
+            // otherwise, the first and last letters are swapped
+
+            else
+            {
+                // adds the last letter as the first letter to the newOutput
+                newOutput += word[word.Length - 1];
+                
+                // adds the middle of the word
+                newOutput += word.Substring(1, word.Length - 2);
+
+                // adds the first letter as the last letter to the newOutput
+                newOutput += word[0];
+
+                // returns the swapped word
+                return newOutput;
+
+            }
+            
+
+        }
+    }
+}
+
+
+
+
+
+
+*** THIS IS ANOTHER FILE CALLED Program.cs
+
+
+
+
+namespace SwapCharacters
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            // initializes the new object
+            Swapped swapped = new Swapped();
+
+            // calls the function FirstLast
+            Console.WriteLine(swapped.FirstLast("z"));
+        }
+    }
+}
+
