@@ -1,0 +1,64 @@
+// Written by: Kristy Paramo
+// 2/19/25
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+
+
+*** THIS IS A FILE CALLED IsInOrder.cs
+
+
+
+
+namespace InOrder
+{
+    public class IsInOrder
+    {
+        // will return a bool
+        public bool Solution(string sentence)
+        {
+
+            // iterates through each character in the sentence string
+            for (int i = 1; i < sentence.Length; i++)
+            {
+                // compares each character with the previous one
+                // if a character is smaller than the previous one, it returns false
+                if (sentence[i] < sentence[i - 1])
+                {
+                    return false;
+                }
+            }
+            // returns true if the loop completes without returning false
+            return true;
+        }
+    }
+}
+
+
+
+
+
+
+*** THIS IS A FILE CALLED Program.cs
+
+
+
+using System;
+
+namespace InOrder
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            IsInOrder aIsInOrder = new IsInOrder();
+
+            Console.WriteLine(aIsInOrder.Solution("abc"));
+        }
+    }
+}
