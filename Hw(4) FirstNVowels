@@ -1,0 +1,87 @@
+// Written by: Kristy Paramo
+// 2/18/25
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+
+
+
+*** THIS IS A FILE CALLED FirstNVowels.cs
+
+
+
+namespace Vowels
+{
+    //public enum Vowel { a, e, i, o, u }
+    public class FirstNVowels
+    {
+        //char vowel;
+        public string VowelOutput(string sentence, int num)
+        {
+            char[] vowels = { 'a', 'e', 'i', 'o', 'u' };
+            string result = "";
+            //string newResult = " ";
+            //StringBuilder result = new StringBuilder();
+            //string[] newString = new string];
+
+            foreach (char v in sentence)
+            {
+              
+                char lowerC = char.ToLower(v);
+                string charAsString = char.ToString(v);
+
+
+                foreach (char c in vowels)
+                {
+                    if (lowerC == v)
+                    {
+                        result.Append(c);
+                    }
+                }
+            }
+            if (sentence.Length < num)
+            {
+                return "invalid";
+            }
+            //string newResult = " ";
+
+            return result;
+        }
+
+    }
+}
+
+
+
+
+
+
+*** THIS IS ANOTHER FILE CALLED Program.cs
+
+
+
+// Written by: Kristy Paramo
+// 2/28/25
+
+
+
+using System;
+
+namespace Vowels
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            FirstNVowels solution = new FirstNVowels();
+
+            Console.WriteLine(solution.VowelOutput("major league", 3));
+        }
+    }
+}
