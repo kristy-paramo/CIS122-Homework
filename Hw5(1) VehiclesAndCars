@@ -19,7 +19,7 @@ using System.Threading.Tasks;
 
 namespace VehiclesAndCars
 {
-    public abstract class Vehicle
+    public class Vehicle
     {
         // class variables
         private string make = "n/a";
@@ -56,7 +56,7 @@ namespace VehiclesAndCars
         // method
         public override string ToString()
         {
-            return $"{Year} {Model} {Year}";
+            return $"Year: {Year}, Model: {Model}, Year: {Year}";
         }
 
 
@@ -76,12 +76,15 @@ namespace VehiclesAndCars
         }
 
         // constructor
-        public Car(string aMake, string aModel, int aYear): base(aMake, aModel, aYear) {}
+        public Car(string make, string model, int year, int numberOfDoors): base(make, model, year) 
+        {
+            NumberOfDoors = numberOfDoors;
+        }
 
         // methods 
         public override string ToString()
         {
-            return ($"{Year} {Make} {Model} with X doors");
+            return ($"Year: {Year}, Make: {Make}, Model: {Model} with {NumberOfDoors} doors");
         }
     }
 
@@ -98,12 +101,15 @@ namespace VehiclesAndCars
         }
 
         // constructor
-        public Motorcycle(string aMake, string aModel, int aYear) : base(aMake, aModel, aYear) { }
+        public Motorcycle(string make, string model, int year, bool hasSideCar) : base(make, model, year)
+        {
+            HasSideCar = hasSideCar;
+        }
 
         // method
         public override string ToString()
         {
-            return ($"{Year} {Make} {Model} (Has Sidecar: true/false");
+            return ($"Year: {Year}, Make: {Make}, Model: {Model}, (Has Sidecar: {HasSideCar}");
         }
     
     }
@@ -129,10 +135,10 @@ namespace VehiclesAndCars
     {
         static void Main(string[] args)
         {
-            Car car = new("Ford", "Fusion", 2005);
+            Car car = new("Ford", "Fusion", 2005, 4);
             Console.WriteLine(car.ToString());
 
-            Motorcycle motorcycle = new("Harley", "XSon", 2019);
+            Motorcycle motorcycle = new("Harley", "XSon", 2019, true);
             Console.WriteLine(motorcycle.ToString());
         }
     }
