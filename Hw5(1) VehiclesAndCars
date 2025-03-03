@@ -1,0 +1,139 @@
+// Written by: Kristy Paramo
+// 2/26/25
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+
+
+*** THIS IS A FILE CALLED VehiclesAndCars.cs
+
+
+
+
+
+namespace VehiclesAndCars
+{
+    public abstract class Vehicle
+    {
+        // class variables
+        private string make = "n/a";
+        private string model = "model";
+        private int year = 0;
+
+        // gets and sets
+        public string Make
+        {
+            get => make;
+            set => make = value;
+        }
+
+        public string Model
+        {
+            get => model;
+            set => model = value;
+        }
+
+        public int Year
+        {
+            get => year;
+            set => year = value;
+        }
+
+        // constructors 
+        public Vehicle(string aMake, string aModel, int aYear)
+        {
+            Make = aMake;
+            Model = aModel;
+            Year = aYear;
+        }
+
+        // method
+        public override string ToString()
+        {
+            return $"{Year} {Model} {Year}";
+        }
+
+
+    }
+
+
+    public class Car : Vehicle
+    {
+        // additional property
+        private int numberOfDoors = -1;
+
+        // get and set
+        public int NumberOfDoors
+        {
+            get => numberOfDoors;
+            set => numberOfDoors = value;
+        }
+
+        // constructor
+        public Car(string aMake, string aModel, int aYear): base(aMake, aModel, aYear) {}
+
+        // methods 
+        public override string ToString()
+        {
+            return ($"{Year} {Make} {Model} with X doors");
+        }
+    }
+
+    public class Motorcycle : Vehicle
+    {
+        // additional property
+        private bool hasSideCar = false;
+
+        // get and set
+        public bool HasSideCar
+        {
+            get => hasSideCar;
+            set => hasSideCar = value;
+        }
+
+        // constructor
+        public Motorcycle(string aMake, string aModel, int aYear) : base(aMake, aModel, aYear) { }
+
+        // method
+        public override string ToString()
+        {
+            return ($"{Year} {Make} {Model} (Has Sidecar: true/false");
+        }
+    
+    }
+}
+
+
+
+
+
+
+
+*** THIS IS ANOTHER FILE CALLED Program.cs
+
+
+
+
+
+using System;
+
+namespace VehiclesAndCars
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            Car car = new("Ford", "Fusion", 2005);
+            Console.WriteLine(car.ToString());
+
+            Motorcycle motorcycle = new("Harley", "XSon", 2019);
+            Console.WriteLine(motorcycle.ToString());
+        }
+    }
+}
