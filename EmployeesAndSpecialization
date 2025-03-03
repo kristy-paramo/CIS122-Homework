@@ -1,0 +1,146 @@
+// Written by: Kristy Paramo
+// 2/27/25
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+
+
+*** THIS IS A FILE CALLED Employee.cs
+
+
+
+namespace EmployeesAndSpecialization
+{
+    public class Employee
+    {
+        // class variables
+        private string name = "n/a";
+        private int salary = -1;
+
+        // gets and sets
+        public string Name
+        {
+            get => name;
+            set => name = value;
+        }
+
+        public int Salary
+        {
+            get => salary;
+            set => salary = value;
+        }
+
+        // constructor
+        public Employee(string aName, int aSalary)
+        {
+            Name = aName;
+            Salary = aSalary;
+        }
+
+        // method
+        public override string ToString()
+        {
+            return $"Employee: {Name}, Salary: {Salary};";
+        }
+    }
+
+
+    // Employee's child class : Manager
+    public class Manager: Employee
+    {
+        // additional property
+        private int numberOfEmployeesManaged = -1;
+
+        // get & set
+        public int NumberOfEmployeesManaged
+        {
+            get => numberOfEmployeesManaged;
+            set => numberOfEmployeesManaged = value;
+        }
+
+        
+        // constructor
+        public Manager(string name, int salary, int aNumberOfEmployeesManaged) : base(name, salary)
+        {
+            NumberOfEmployeesManaged = aNumberOfEmployeesManaged;
+        }
+
+
+        //public Manager(string aName, int aSalary, int aNumberOfEmployeesManaged)
+        //{
+            //Name= aName;
+            //Salary = aSalary;
+            //NumberOfEmployeesManaged = aNumberOfEmployeesManaged;
+        //}
+
+
+        // override method
+        public override string ToString()
+        {
+            return $"Manager: {Name}, Salary: ${Salary}, Number of employees managed: {NumberOfEmployeesManaged}";
+        }
+    }
+
+    // Employee's child class : Engineer
+    public class Engineer : Employee
+    {
+        // additional property
+        private string specialization = "n/a";
+
+        // get set
+        public string Specialization
+        {
+            get => specialization;
+            set => specialization = value;
+        }
+
+        // constructor
+        public Engineer(string name, int salary, string specialization) : base(name, salary)
+        {
+            Specialization = specialization;
+        }
+
+        // method
+        public override string ToString()
+        {
+            return $"Engineer: {Name}, Salary: ${Salary}, Specialization: {Specialization}"; 
+        }
+    }
+}
+
+
+
+
+
+*** THIS IS ANOTHER FILE CALLED Program.cs
+
+
+
+
+using System;
+
+namespace EmployeesAndSpecialization
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+
+            Employee employee = new Employee("Allison", 63000);
+            Console.WriteLine(employee);
+
+            Manager manager = new("Carl", 75000, 6);
+            Console.WriteLine(manager.ToString());
+
+            Engineer engineer = new("Max", 95000, "Mechanical");
+            Console.WriteLine(engineer.ToString());
+        }
+    }
+}
+
