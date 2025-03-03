@@ -72,13 +72,6 @@ namespace EmployeesAndSpecialization
         }
 
 
-        //public Manager(string aName, int aSalary, int aNumberOfEmployeesManaged)
-        //{
-            //Name= aName;
-            //Salary = aSalary;
-            //NumberOfEmployeesManaged = aNumberOfEmployeesManaged;
-        //}
-
 
         // override method
         public override string ToString()
