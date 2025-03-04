@@ -1,0 +1,157 @@
+// Written by: Kristy Paramo
+// 2/27/25
+
+using System;
+using System.Collections.Generic;
+using System.Diagnostics.Contracts;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+
+
+*** THIS IS A FILE CALLED Shape.cs
+
+
+
+
+namespace ShapesAndAreas
+{
+    public abstract class Shape
+    {
+        // class variable
+        private string color = "n/a";
+        
+        // get & set
+        public string Color
+        {
+            get => color;
+            set => color = value;
+        }
+
+        // constructor
+        public Shape(string color)
+        {
+            Color = color;
+        }
+    
+        // abstract method
+        public abstract double GetArea();
+
+        // method
+
+        public override string ToString()
+        {
+            return $"{Color} Shape";
+        }
+    }
+
+
+    // Shape's child class : Rectangle
+    public class Rectangle : Shape
+    {
+        // class variables
+        private double width;
+        private double height;
+
+        // get & set
+        public double Width
+        {
+            get => width;
+            set => width = value;
+        }
+
+        public double Height
+        {
+            get => height;
+            set => height = value;
+        }
+
+
+        // constructor
+        public Rectangle(string color,double width, double height): base(color)
+        {
+            Width = width;
+            Height = height;
+        }
+
+        // method
+        public override double GetArea()
+        {
+            return Width * Height;
+        }
+
+        public override string ToString()
+        {
+            return $"{base.ToString()}\nWidth: {Width}\nHeight: {Height}\nArea: {GetArea()}";
+           
+        }
+    }
+
+
+    // Shape's child class : Circle
+    public class Circle : Shape
+    {
+        // class variables
+        private double radius;
+
+        // get set
+        public double Radius
+        {
+            get => radius;
+            set => radius = value;
+        }
+
+        // constructor
+
+        public Circle(string color, double radius): base(color)
+        {
+            Radius = radius;
+        }
+
+        // method
+        public override double GetArea()
+        {
+            return Math.PI * Radius * Radius;
+        }
+
+        public override string ToString()
+        {
+            return $"{base.ToString()}\nRadius: {Radius}\nArea:{GetArea()}";
+        }
+    }
+
+
+}
+
+
+
+*** THIS IS ANOTHER FILE CALLED Program.cs
+
+
+
+
+using System;
+
+namespace ShapesAndAreas
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            
+            Rectangle rectangle = new Rectangle("Blue", 10, 5);
+            Console.WriteLine(rectangle);
+
+            Console.WriteLine();
+
+            Circle circle = new Circle("Red", 7.5);
+            Console.WriteLine(circle);
+        }
+
+
+    }
+}
+
