@@ -1,0 +1,141 @@
+// Written by: Kristy Paramo
+// 2/27/25
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+
+
+*** THIS IS A FILE CALLED Book.cs
+
+
+
+
+namespace LibrarySystem
+{
+    public class Book
+    {
+        // properties
+        private string title;
+        private string author;
+        private int yearPublished;
+
+        // gets and sets
+        public string Title
+        {
+            get => title;
+            set => title = value;
+        }
+
+        public string Author
+        {
+            get => author;
+            set => author = value;
+        }
+
+        public int YearPublished
+        {
+            get => yearPublished;
+            set => yearPublished = value;
+        }
+
+        // constructor
+
+        public Book(string title, string author, int yearPublished)
+        {
+            Title = title;
+            Author = author;
+            YearPublished = yearPublished;
+        }
+
+        // method
+        public override string ToString()
+        {
+            return $"{Title} by {Author} ({YearPublished})";
+        }
+    }
+
+    // child class
+    public class EBook : Book
+    {
+        // additional property
+        private double fileSizeMB;
+
+        // gets and sets
+        public double FileSizeMB
+        {
+            get => fileSizeMB;
+            set => fileSizeMB = value;
+        }
+
+        // constructor
+        public EBook(string title, string author, int yearPublished, double fileSizeMB): base(title, author, yearPublished)
+        {
+            FileSizeMB = fileSizeMB;
+        }
+
+        // overriding
+        public override string ToString()
+        {
+            return $"{Title} by {Author} ({YearPublished}) has a file size of {FileSizeMB} mb."; 
+        }
+    }
+
+
+    // child class
+    public class PrintedBook : Book
+    {
+        // additional property
+        private int pageCount;
+
+        // get/set
+        public int PageCount
+        {
+            get => pageCount;
+            set => pageCount = value;
+        }
+
+        // constructor
+        public PrintedBook(string title, string author, int yearPublished, int pageCount): base(title, author, yearPublished)
+        {
+            PageCount = pageCount;
+        }
+
+        // overriding
+        public override string ToString()
+        {
+            return $"{Title} by {Author} ({YearPublished}) has {PageCount} pages."; 
+        }
+    }
+}
+
+
+
+
+*** THIS IS ANOTHER FILE CALLED Program.cs
+
+
+
+using System; 
+
+namespace LibrarySystem
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            EBook eBook = new EBook("Pride and Prejudice", "Jane Austen", 2001, 80.3);
+            Console.WriteLine(eBook);
+
+            PrintedBook printedBook = new PrintedBook("Little Women", "Louisa May Alcott", 1868, 759);
+            Console.WriteLine(printedBook);
+        }
+    }
+}
+
