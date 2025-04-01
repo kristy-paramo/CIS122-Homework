@@ -1,0 +1,70 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace TwoSum
+{
+    public class TwoSum1
+    {
+        // method
+        public static int[] OurTwoSum(int[] nums, int target)
+        {
+            // creates a dictionary to store results in
+            Dictionary<int, int> numDict = new Dictionary<int, int>();
+
+            // loops through the array called nums
+            for (int i = 0; i < nums.Length; i++)
+            {
+                // sets a variable to be the target (minus) the index we are currently on
+                int subtraction = target - nums[i];
+
+                // if dictionary contains variable to be true, a new array is returned with the variable and i
+                if (numDict.ContainsKey(subtraction))
+                {
+                    return new int[] { numDict[subtraction], i };
+                }
+
+                // if the current number (nums[i]) is not in the dictionary, it adds the number as a key and i as the value
+                if (!numDict.ContainsKey(nums[i]))
+                {
+                    numDict[nums[i]] = i;
+                }
+
+            }
+            // returns an empty array if no solution is found 
+            return new int[0];
+        }
+        
+    }
+}
+
+
+
+
+
+
+
+*** NEW FILE CALLED PROGRAM.CS
+
+
+
+using System;
+using System.Collections.Generic;
+
+namespace TwoSum
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            int[] nums = { 2, 7, 11, 15 };
+            int target = 9;
+            
+
+            int[] result = TwoSum1.OurTwoSum(nums, target);
+            Console.WriteLine("[" + string.Join(",", result) + "]");
+        }
+    }
+}
