@@ -1,0 +1,64 @@
+// Written by: Kristy Paramo
+// 4/1/25
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace NeedleHaystack
+{
+    public class SearchNeedle
+    {
+        public static int StringSearch(string haystack, string needle)
+        {
+            // if either needle or haystack is null or empty, it makes sures something is returned
+            // in this case: 0 or -1
+            if (string.IsNullOrEmpty(needle)) return 0;
+            if (string.IsNullOrEmpty(haystack)) return -1;
+        
+            // loops through index 
+            for (int i = 0; i < haystack.Length - needle.Length; i++)
+            {
+                // checks if a substring of haystack that starts at index i and has
+                // the same length as needle, matches needle
+                if (haystack.Substring(i, needle.Length) == needle)
+                {
+                    // if true, it returns i, meaning needle is found at index i
+                    return i;
+                }
+            }
+            // if statement = not true, -1 is returned
+            return -1;
+        
+        }
+
+    }
+}
+
+
+
+
+
+*** NEW FILE CALLED PROGRAM.CS
+
+
+
+
+namespace NeedleHaystack
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            string haystack = "abracadabra";
+            string needle = "cada";
+            int result = SearchNeedle.StringSearch(haystack, needle);
+            
+            Console.WriteLine(result);
+        }
+    }
+}
