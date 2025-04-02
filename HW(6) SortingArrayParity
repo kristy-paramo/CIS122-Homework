@@ -1,0 +1,80 @@
+// Written by: Kristy Paramo
+// 4/1/25
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SortArrayParity
+{
+    public class SortingArray
+    {
+        public int[] SortingByParity(int[] nums)
+        {
+            // left pointer
+            int left = 0;
+
+            // right pointer
+            int right = nums.Length - 1;
+
+            while (left < right)
+            {
+                // checks if num is even
+                if (nums[left] % 2 == 0)
+                {
+                    // moves left pointer to the right
+                    left++;
+                }
+
+                // checks if num is odd
+                else if (nums[right] % 2 != 0)
+                {
+                    // moves right pointer to the left
+                    right--;
+                }
+                // swaps left and right as temp
+                else
+                {
+                    // if left pointer points to odd # and right
+                    // pointer points to even #, we swap them
+                    int temp = nums[left];
+                    nums[left] = nums[right];
+                    nums[right] = temp;
+
+                    // left is moved forward
+                    left++;
+
+                    // right is moved backward
+                    right--;
+                }
+            }
+
+            return nums;
+
+        }
+    }
+}
+
+
+
+
+*** NEW FILE CALLED PROGRAM.CS
+
+
+namespace SortArrayParity
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            var sortingArray = new SortingArray();
+            int[] nums = { 3, 1, 2, 4 };
+            int[] result = sortingArray.SortingByParity(nums);
+
+            Console.WriteLine(string.Join(", ", result));
+        }
+    }
+}
