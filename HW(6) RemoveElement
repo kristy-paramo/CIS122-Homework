@@ -1,0 +1,66 @@
+// Written by: Kristy Paramo
+// 4/1/25
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace RemoveElement
+{
+    public class Removing
+    {
+        public int Remove(int[] nums, int val)
+        {
+            // sets k to default value 0, tracks the position where elements
+            // are not equal to val 
+            int k = 0;
+
+            for (int i = 0; i < nums.Length; i++)
+            {
+                // if index of array, i, is not equal to val
+                if (nums[i] != val)
+                {
+                    // moves nums[i] to nums[k] and increment k by 1
+                    nums[k] = nums[i];
+                    k++;
+                }
+            }
+            // count of elements not equal to val
+            return k;
+        }
+    }
+}
+
+
+
+
+*** THIS IS A FILE CALLED PROGRAM.CS
+
+
+// Written by: Kristy Paramo
+// 4/1/25
+
+
+
+namespace RemoveElement
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] nums = { 3, 5, 5, 5, 8, 9, 5 };
+            int val = 5;
+
+            Removing removing = new Removing();
+            int k = removing.Remove(nums, val);
+
+            Console.WriteLine(k);
+
+            
+        }
+    }
+}
