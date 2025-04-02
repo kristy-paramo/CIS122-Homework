@@ -1,0 +1,89 @@
+// Written by: Kristy Paramo
+// 4/1/25
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MergeSortedArray
+{
+    public class MergingArray
+    {
+        public void Merge(int[] nums1, int m, int[] nums2, int n)
+        {
+            // new array to store the sorted values
+            int[] merged = new int[m + n];
+
+            // initializes integers
+            int i = 0;
+            int j = 0;
+            int k = 0;
+
+            // merge elements from both arrays and sorts 
+            while ( i< m && j < n)
+            {
+                if (nums1[i] < nums2[j])
+                {
+                    merged[k] = nums1[i];
+                    i++;
+                }
+                else
+                {
+                    merged[k] = nums2[j];
+                    j++;
+                }
+                k++;
+            }
+
+            // copies any remaining elements from nums1
+            while (i < m)
+            {
+                merged[k] = nums2[j];
+                j++;
+                k++;
+            }
+
+            // copies any remaining elements from nums2
+            while(j < n)
+            {
+                merged[k] = nums2[j];
+                j++; 
+                k++;
+            }
+
+            // copies merged array back into nums1 array
+            for (int x = 0; x < m + n; x++)
+            {
+                nums1[x] = merged[x];
+            }
+
+        }
+    }
+}
+
+
+
+*** THIS IS ANOTHER FILE CALLED PROGRAM.CS
+
+
+namespace MergeSortedArray
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] nums1 = { 1, 2, 3, 0, 0, 0 };
+            int m = 3;
+            int[] nums2 = { 2, 5, 6 };
+            int n = 3;
+
+            MergingArray mergingArray = new MergingArray();
+            mergingArray.Merge(nums1, m, nums2, n);
+
+            Console.WriteLine(string.Join(", ", nums1));
+        }
+    }
+}
