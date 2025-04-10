@@ -1,0 +1,60 @@
+// Written by: Kristy Paramo
+// 4/9/25
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Segment
+{
+    public class CountSequence
+    {
+        public int Counting(string s)
+        {
+            // counter
+            int count = 0;
+            // automatic is false if inWord
+            bool inWord = false;
+
+            for (int i = 0; i < s.Length; i++)
+            {
+               // checks if character is not a space and if its not(not) in Word
+                if (s[i] != ' ' && !inWord)
+                {
+                    // we are in a Word
+                    count++;
+                    inWord = true;
+                }
+
+                // if it is a space, we are not in a word
+                else if (s[i] == ' ')
+                {
+                    inWord = false;
+                }
+
+            }
+            return count;
+        }
+    }
+}
+
+
+
+*** PROGRAM FILE
+
+namespace Segment
+{
+    public class Program
+    {
+        public void Main(string[] args)
+        {
+            string s = "leetcode";
+            CountSequence countSequence = new CountSequence();
+            int result = countSequence.Counting(s);
+            Console.WriteLine(result);
+        }
+    }
+}
