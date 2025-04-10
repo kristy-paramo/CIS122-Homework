@@ -1,0 +1,58 @@
+// Written by: Kristy Paramo
+// 4/9/25
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Difference
+{
+    public class FindDifference
+    {
+    public char FindTheDifference(string s, string t)
+        {
+            // calculate the sum of the values of characters in both strings
+            int sumS = 0;
+            int sumT = 0;
+
+            // sum the values of characters in string s
+            for (int i = 0; i < s.Length; i++)
+            {
+                sumS += s[i];  // adding the value of s[i]
+            }
+
+            // add values of characters in string t
+            for (int i = 0; i < t.Length; i++)
+            {
+                sumT += t[i];  // adding values of character t[i]
+            }
+
+            // difference between the sums gives the extra character
+            return (char)(sumT - sumS);
+        }
+    }
+}
+
+
+
+*** PROGRAM FILE
+
+
+
+
+namespace Difference
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            string s = "abcd";
+            string t = "abcde";
+            FindDifference solution = new FindDifference();
+            Console.WriteLine(solution.FindTheDifference(s, t));  // Output: 'e'
+        }
+    }
+}
