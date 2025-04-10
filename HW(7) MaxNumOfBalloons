@@ -1,0 +1,103 @@
+// Written by: Kristy Paramo
+// 4/9/25
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MaxNumOfBalloons
+{
+    public class BalloonCounter
+    {
+        public int MaxBalloons(string text)
+        {
+            // counters
+            int b = 0;
+            int a = 0;
+            int l = 0;
+            int o = 0;
+            int n = 0;
+
+     
+            
+            foreach( char c in text)
+            {
+                // l and o occur 2 times in 'balloon'
+                l /= 2;
+                o /= 2;
+                // checks if each index contains that letter
+                if ( c == 'b')
+                {
+                    b++;
+                }
+                else if ( c == 'a')
+                {
+                    a++;
+                }
+                else if ( c == 'l')
+                {
+                    l++;
+                }
+                else if ( c == 'o')
+                {
+                    o++;
+                }
+                else if ( c == 'n')
+                {
+                    n++;
+                }
+            }
+       
+
+            // full # of balloons
+            // sets the min as b
+            int min = b;
+
+            // checks if each letter is used less than the min(b)
+            // if it is, that is the new min
+            if (a < b)
+            {
+                min = a;
+            }
+            if (l < b)
+            {
+                min = l;
+            }
+            if (o < b)
+            {
+                min = o;
+            }
+            if (n < b)
+            {
+                min = n;
+            }
+            return min;
+        }
+    }
+}
+
+
+
+
+
+*** PROGRAM FILE
+
+
+
+namespace MaxNumOfBalloons
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+      
+            BalloonCounter counter = new BalloonCounter();
+            string input = "loonbalxballpoon";
+            Console.WriteLine(counter.MaxBalloons(input)); 
+        }
+
+
+    }
+}
