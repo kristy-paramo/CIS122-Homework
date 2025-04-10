@@ -1,0 +1,71 @@
+// Written by: Kristy Paramo
+// 4/9/25
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MergeAlternately
+{
+    public class Merge
+    {
+
+        public string MergeString(string word1, string word2)
+        {
+            // counters
+            int i = 0;
+            int j = 0;
+            string merge = "";
+
+            // alternate between characters as long as
+            // they're both less than the length of the word
+            while (i < word1.Length && j < word2.Length)
+            {
+                merge += word1[i];
+                merge += word2[j];
+                i++;
+                j++;    
+            }
+
+            // if word1 is longer, add components to the end of the string 'merge'
+            while (i < word1.Length)
+            {
+                merge += word1[i];
+                i++;
+            }
+
+            // if word2 is longer, add components to the end of the string 'merge'
+            while (j < word2.Length)
+            {
+                merge += word2[j];
+                j++;
+            }
+            return merge;
+        }
+    }
+}
+
+
+
+*** PROGRAM FILE
+
+
+
+
+namespace MergeAlternately
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            string word1 = "abc";
+            string word2 = "defgh";
+
+            Merge merge = new Merge();
+            string mergeString = merge.MergeString(word1, word2);
+        }
+    }
+}
