@@ -1,0 +1,60 @@
+// Written by: Kristy Paramo
+// 4/9/25
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace FirstUniqueCharacter
+{
+    public class Unique
+    {
+        public int FirstUnique(string s)
+        {
+            // assume characters 0-26
+
+            int[] word = new int[26];
+
+            // pass and count characters
+            for (int i = 0; i < s.Length; i++)
+            {
+                char c = s[i];
+                word[c]++; 
+            }
+
+            // checking if its the only character in the array
+
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (word[i] == 1)
+                {
+                    return 1;
+                }
+            }
+            return -1;
+        }
+    }
+}
+
+
+
+*** PROGRAM FILE
+
+
+
+namespace FirstUniqueCharacter
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            Unique unique = new Unique();
+
+            string input = "leetcode";
+            Console.WriteLine(unique.FirstUnique(input));
+        }
+    }
+}
