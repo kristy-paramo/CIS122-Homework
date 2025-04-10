@@ -1,0 +1,72 @@
+// Written by : Kristy Paramo
+// 4/9/25
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace RobotReturnToOrigin
+{
+    public class Robot
+    {
+        public bool Circle(string moves)
+        {
+            // COUNTERS for movements
+
+            // horizontal
+            int x = 0;
+
+            // vertical
+            int y = 0;
+
+            foreach (char move in moves)
+            {
+                if (move == 'R')
+                {
+                    // moves right
+                    x++;
+                }
+                if (move == 'L')
+                {
+                    // moves left
+                    x--;
+                }
+                if (move == 'U')
+                {
+                    // moves upward
+                    y++;
+                }
+                if (move == 'D')
+                {
+                    // moves downward
+                    y--;
+                }
+            }
+            // will return true or false depending on if robot is back to its origin (0,0)
+            return x ==  0 && y == 0;
+        }
+    }
+}
+
+
+
+*** PROGRAM FILE
+
+
+
+namespace RobotReturnToOrigin
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            Robot robot = new Robot();
+
+            string moves = "UD";
+            Console.WriteLine(robot.Circle(moves));
+        }
+    }
+}
+
