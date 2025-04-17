@@ -1,0 +1,113 @@
+// Written by: Kristy Paramo
+// 4/17/25
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BaseballGame
+{
+    public class Baseball
+    {
+        // takes an array of strings, returns an int
+        public int CalcPoints(string[] operations)
+        {
+            // initializes empty list of ints to store the scores
+            List<int> stack = new List<int>();
+
+            // loops through each string in the input
+            foreach (string s in operations)
+            {
+                if (s == "+")
+                {
+                    if (stack.Count >= 2)
+                    {
+                        // gets last 2 valid scores, and adds them , storing result in 'sum'
+                        int sum = stack[stack.Count - 1] + stack[stack.Count - 2];
+
+                        // adds result to stack
+                        stack.Add(sum);
+
+                    }
+                }
+
+                else if (s == "D")
+                {
+                    if (stack.Count >= 1) 
+                    {
+                        // takes last valid score and doubles it
+                        int doubled = 2 * stack[stack.Count - 1];
+
+                        // adds result to stack
+                        stack.Add(doubled);
+
+                    }
+                }
+
+                else if (s == "C")
+                {
+
+                    if (stack.Count >= 1)
+                    {
+                        // removes last valid score from stack
+                        stack.RemoveAt(stack.Count - 1);
+                    }
+                      
+                }
+
+                else
+                {
+                    // if string is none of the above symbols, its a number
+                    // parse converts it to an int
+                    // adds it to stack
+                    stack.Add(int.Parse(s));
+                }
+            }
+
+            // initializes total to 0
+            int total = 0;
+
+            foreach (int score in stack)
+            {
+                // loop through each # in stack
+                // add each store to total
+
+                total += score;
+            }
+            return total;
+        }
+    }
+}
+
+
+
+
+
+
+
+*** PROGRAM
+
+
+
+// Written by: Kristy Paramo
+// 4/17/25
+
+using System.Buffers;
+
+namespace BaseballGame
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            var baseball = new Baseball();
+
+            string[] operations = new string[] { "5", "2", "C", "D", "+" };
+
+            Console.WriteLine(baseball.CalcPoints(operations));
+        }
+    }
+}
