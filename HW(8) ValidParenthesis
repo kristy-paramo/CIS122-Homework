@@ -1,0 +1,76 @@
+// Written by: Kristy Paramo
+// 4/16/25
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ValidParenthesis
+{
+    public class ValidBrackets
+    {
+        public bool IsValid(string s)
+        {
+            // initializes empty stack
+            Stack<char> stack = new Stack<char>();
+
+            // loops through each character
+            foreach (char c in s)
+            {
+                // checks if character is an opening bracket
+                if (c == '(' || c == '{' || c == '[')
+                {
+                    // adds the opening bracket to the top of the stack
+                    // we will compare it to the next closing bracket we encounter
+                    stack.Push(c);
+
+                }
+                // else will only run for closing brackets
+                else
+                {
+                    // checks if stack is empty
+                    // if there's no opening bracket, string is invalid
+                    if (stack.Count == 0) return false;
+
+                    // removes top item (most recent opening bracket)
+                    char top = stack.Pop();
+
+                    // will now check if top item matches current closing bracket
+                    if ((c == ')' && top != '(') ||
+                        (c == '}' && top != '{') ||
+                        (c == ']' && top != '['))
+                    {
+                        // no match
+                        return false;
+                    }
+                }
+            }
+            // after loop, checks if any unmatched opening brackets remain in the stack
+            // if its not empty, theres unmatched opening brackets
+            return stack.Count == 0;
+        }
+    }
+}
+
+
+*** PROGRAM
+
+
+
+
+namespace ValidParenthesis
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            var validBrackets = new ValidBrackets();
+            Console.WriteLine(validBrackets.IsValid("()[]{}")); // True
+            Console.WriteLine(validBrackets.IsValid("([)]"));   // False
+            Console.WriteLine(validBrackets.IsValid("{[]}"));   // True
+        }
+    }
+}
+                                              
