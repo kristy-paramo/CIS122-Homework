@@ -1,0 +1,76 @@
+// Written by: Kristy Paramo
+// 4/17/25
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace FindPivotIndex
+{
+    public class FindPivot
+    {
+        // takes an integer array nums as input
+        // returns an integer
+        public int PivotIndex(int[]nums)
+        {
+            // initializes to 0
+            // will hold sum of all elements in array
+            int totalSum = 0;
+
+            // loops through each num in array
+            foreach (int num in nums)
+            {
+                // adds num 
+                totalSum += num;
+            }
+
+            // tracks running sum of elements to the left of current index
+            int leftSum = 0;
+
+            for (int i = 0; i < nums.Length; i++)
+            {
+                // calculates right by subtracting the left and current element from totalSum
+                int rightSum = totalSum - leftSum - nums[i];
+
+                if (leftSum == rightSum)
+                {
+                    // found pivot index
+                    return i;
+                }
+
+                // if not pivot, add before continuing
+                leftSum += nums[i];
+            }
+
+            // no pivot index
+            return -1;
+
+        }
+    }
+}
+
+
+
+
+*** PROGRAM
+
+
+
+namespace FindPivotIndex
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            FindPivot findPivot = new FindPivot();
+            int[] nums = { 1, 7, 3, 6, 5, 6 };
+            int pivot = findPivot.PivotIndex(nums);
+            Console.WriteLine("Pivot Index: " + pivot);  // Output: 3
+
+
+        }
+    }
+}
