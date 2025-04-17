@@ -1,0 +1,95 @@
+// Written by: Kristy Paramo
+// 4/17/25
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace StudentLunch
+{
+    public class Sandwich
+    {
+
+        public int CountStudents(int[] students, int[] sandwiches)
+        {
+            // initialize the counters for sandwich types
+            int circleSandwich = 0;
+            int squareSandwich = 0;
+
+            // counts the preferences of students
+            foreach(int student in students)
+            {
+                if (student == 0)
+                {
+                    // circular sandwiches are referred as 0
+                    circleSandwich++;
+                }
+                else
+                {
+                    // square sandwiches are referred as 1
+                    squareSandwich++;
+                }
+            }
+
+            // loops through each sandwich from the top of the stack
+            foreach (int sandwich in sandwiches)
+            {
+                // if its a circle(0) and they prefer circle, we give it to them
+                if (sandwich == 0 && circleSandwich > 0) 
+                {
+                    // reduces count of circle sandwiches left
+                    circleSandwich--;
+                }
+
+                // if its a square(1) and they prefer square, we give it to them
+                else if (sandwich == 1 && squareSandwich > 0)
+                {
+                    // reduces count of square sandwiches left
+                    squareSandwich--;
+                }
+
+                // if no one wants the current sandwich, loop is broken
+                // rest of students cant take any sadnwiches
+                else
+                {
+                    break;
+                }
+            }
+
+            // total number of students who didnt eat
+            return circleSandwich + squareSandwich;
+        }
+    }
+}
+
+
+
+
+*** PROGRAM FILE
+
+
+
+
+
+namespace StudentLunch
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            int[] students = { 1, 1, 0, 0 };
+            int[] sandwiches = { 0, 1, 0, 1 };
+
+            Sandwich sandwich = new Sandwich();
+
+            int result = sandwich.CountStudents(students, sandwiches);
+
+            Console.WriteLine("Number of students unable to eat: " + result);
+        }
+    }
+}
+
