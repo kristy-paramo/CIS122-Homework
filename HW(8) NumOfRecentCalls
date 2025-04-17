@@ -1,0 +1,70 @@
+// Written by: Kristy Paramo
+// 4/17/25
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace NumOfRecentCalls
+{
+    public class RecentCounter
+    {
+        // will hold the timestamps of the recent requests
+        private Queue<int> queue;
+
+        public RecentCounter()
+        {
+            // initializes empty queue when object is created
+            queue = new Queue<int>();   
+        }
+
+        // method accepts an int(t) that represents the current time stamp
+        // returns an int that represents the # of pings in the last 3000 milliseconds
+        public int Ping(int t)
+        {
+            // adds current timestamp to end of queue
+            queue.Enqueue(t);
+
+            // peek checks front of queue (oldest timestamp)
+            // if its older than 3000 milliseconds ago, its outside the allowed time window
+            while (queue.Peek() < t-3000)
+            {
+                // keeps removing oldest timestamp from the front of queue
+                queue.Dequeue();
+            }
+
+            // after queue is clean, this returns the # of timestamps left (requests within the last 3000 ms)
+            return queue.Count;
+        }
+
+    }
+}
+
+
+
+
+
+
+*** PROGRAM
+
+
+using System.Diagnostics.Tracing;
+
+namespace NumOfRecentCalls
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            RecentCounter counter = new RecentCounter();
+
+            Console.WriteLine(counter.Ping(1));     // Output: 1
+            Console.WriteLine(counter.Ping(100));   // Output: 2
+            Console.WriteLine(counter.Ping(3001));  // Output: 3
+            Console.WriteLine(counter.Ping(3002));  // Output: 3
+        }
+    }
+}
