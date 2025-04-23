@@ -1,0 +1,67 @@
+// Written by: Kristy Paramo
+// 4/22/25
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MoveZeroes
+{
+    public class EndZeroes
+    {
+        public void MoveZeroes(int[] nums)
+        {
+            // keeps track of the index where the next non-zero element should be placed
+            int lastNonZero = 0;
+
+
+            // loops through each array
+            for (int i = 0; i < nums.Length; i++)
+            {
+                // checks if current element is not 0
+                if (nums[i] != 0)
+                {
+                    // stores the non zero element in temp
+                    int temp = nums[i];
+                    
+                    // move whatever is at lastNonZero into current position
+                    nums[i] = nums[lastNonZero];
+
+                    // put the non-zero element in its new position at lastNonZero
+                    nums[lastNonZero] = temp;
+
+
+                    // pointer moves forward so its ready for the next non-zero element
+                    lastNonZero++;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+*** PROGRAM
+
+
+namespace MoveZeroes
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            int[] nums = { 3, 6, 9, 0, 0, 5, 0 };
+
+            EndZeroes endZeroes = new EndZeroes();
+
+            endZeroes.MoveZeroes(nums);
+
+            Console.WriteLine(string.Join(", ", nums));
+        }
+    }
+}
