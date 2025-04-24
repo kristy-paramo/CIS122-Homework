@@ -1,0 +1,66 @@
+// Written by: Kristy Paramo
+// 4/24/25
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ReverseString
+{
+    public class ReversingString
+    {
+        // returns nothing
+        // inputs an array of characters
+        public void Reverse(char[] s)
+        {
+            // starting pointer
+            int left = 0;
+
+            // ending pointer
+            int right = s.Length - 1;
+
+            // runs as long as left index is less than right
+            // when left >= right, we've reversed it and loop stops
+
+            while ( left < right)
+            {
+                // store index left into a temporary variable to not lose the value
+                char temp = s[left];
+
+                // replace value at index left with the value at index right
+                s[left] = s[right];
+
+                // replace value at index right with temp(original index left value)
+                s[right] = temp;
+
+                // move right (forward)
+                left ++;
+
+                // move left (backward)
+                right --;
+            }
+        }
+    }
+}
+
+
+
+
+*** PROGRAM
+
+
+namespace ReverseString
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            char[] s = new char[] { 'h', 'e', 'l', 'l', 'o' };
+            ReversingString reverseString = new ReversingString();
+            reverseString.Reverse(s);
+            Console.WriteLine(new string(s)); // Output: "olleh"
+        }
+    }
+}
