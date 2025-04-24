@@ -1,0 +1,94 @@
+// Written by: Kristy Paramo
+// 4/24/25
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace IsHappy
+{
+    public class IsHappy
+    {
+
+        public bool AreTheyHappy (int n)
+        {
+            // creates an array to store up to 1000 numbers 
+            int[] seen = new int[1000];
+
+            // tracks current position in the seen array where the 
+            // next number will be stored
+
+            int seenIndex = 0;
+
+            // keeps looping until n is 1 (happy number)
+            while (n != 1)
+            {
+
+                for (int i = 0; i < seenIndex; i++)
+                {
+                    // if n has been seen before, theres a cycle, not happy
+                    // return false
+                    if ( seen[i] == n)
+                    {
+                        return false;
+                    }
+                }
+                // stores n in the seen array
+                seen[seenIndex] = n;
+
+                // increments the index
+                seenIndex++;
+
+                // calculates the next # in the happy number sequence
+                // uses a helper method
+                n = GetSumOfSqaures(n);
+            }
+            // if loop ends naturally when n is 1, number is happy
+            return true;
+
+        }
+
+        // purpose is to compute the sum of the squares of each digit in the number
+
+        private int GetSumOfSqaures(int num)
+        {
+            // stores running total of squared digits
+            int sum = 0;
+
+            // as long as there are digits left in num
+            while (num > 0)
+            {
+                // gets the last digit of num
+                int digit = num % 10;
+
+                // squares that digit and adds it to sum
+                sum += digit * digit;
+
+                // removes last digit from num
+                num /= 10;
+            }
+            // returns the total sum of squares
+            return sum;
+        }
+    }
+}
+
+
+
+*** PROGRAM
+
+
+namespace IsHappy
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            IsHappy isHappy = new IsHappy();
+
+            Console.WriteLine(isHappy.AreTheyHappy(19));
+        }
+    }
+}
