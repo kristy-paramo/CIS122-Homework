@@ -1,0 +1,71 @@
+// Written by: Kristy Paramo
+// 4/23/25
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace LengthOfLastWord
+{
+    public class CountLastWord
+    {
+        public int LastWord (string s)
+        {
+            // keeps track of the last word's length
+            int length = 0;
+
+            // starts ftom the end of the string 
+            // which points to the last character of the string
+            int i = s.Length - 1;
+
+            // skips trailing spaces at the END of the string
+            while ( i >= 0 && s[i] == ' ' )
+            {
+                // keeps moving backwards from end of string
+                i--;
+            }
+
+            // counts the length of the last word once it encounters a letter
+            // runs as long as we're not at the start of the string and character
+            // stops if it encounters a space
+            while (i >= 0 && s[i] != ' ')
+            {
+                // counts each character increasing length by 1
+                length++;
+
+                // keeps moving backwards from end of string
+                i--;
+            }
+            // returns the num of characters in the last word
+            return length; 
+
+
+        }
+    }
+}
+
+
+
+
+
+*** PROGRAM
+
+
+namespace LengthOfLastWord
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+
+            CountLastWord countLastWord = new CountLastWord();
+            string s = "hi my name is spongebob squarepants and my   best friend is patrick";
+
+          
+            Console.WriteLine(countLastWord.LastWord(s));
+
+        }
+    }
+}
