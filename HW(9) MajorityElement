@@ -1,0 +1,76 @@
+// Written by: Kristy Paramo
+// 4/24/25
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MajorityElement
+{
+    public class Majority
+    {
+
+        // returns an int
+        // input is an array of integers
+
+        public int MajorityNum(int[] nums)
+        {
+
+            // helps determine if we're still supporting the current candidate
+            int count = 0;
+
+            // holds current candidate for the majority element
+            int candidate = 0;
+
+            foreach (int num in nums)
+            {
+                // if counter is 0, previous candidate is no longer supported
+                if (count == 0)
+                {
+                    // sets new candidate to the current num
+                    candidate = num;
+                }
+
+                // candidate is supported and count is increased
+                if (num == candidate)
+                {
+                    // counting one more for candidate
+                    count += 1;
+                }
+
+                // current num is not equal to candidate
+                else
+                {
+                    // candidate is being challenged by a different num
+                    count -= 1;
+                }
+            }
+            // majority element
+            return candidate;
+
+        }
+    }
+}
+
+
+
+
+*** PROGRAM
+
+
+namespace MajorityElement
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] nums = { 2, 2, 1, 1, 1, 2, 2 };
+            Majority majority = new Majority();
+            Console.WriteLine(majority.MajorityNum(nums)); // Output: 2
+        }
+    }
+}
